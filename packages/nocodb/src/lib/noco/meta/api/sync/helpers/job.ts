@@ -1262,7 +1262,7 @@ export default async (
 
   async function nocoBaseDataProcessing_v2(sDB, table, record) {
     const recordHash = hash(record);
-    const rec = record.fields;
+    const rec = { ...record.fields };
 
     // kludge -
     // trim spaces on either side of column name
@@ -2231,6 +2231,8 @@ export default async (
 
         logBasic('Reading Records...');
 
+        const recordsMap = {};
+
         for (let i = 0; i < ncTblList.list.length; i++) {
           const _perfStart = recordPerfStart();
           const ncTbl = await api.dbTable.read(ncTblList.list[i].id);
@@ -2243,7 +2245,7 @@ export default async (
           recordCnt = 0;
           // await nocoReadData(syncDB, ncTbl);
 
-          await importData({
+          recordsMap[ncTbl.id] = await importData({
             projectName: syncDB.projectName,
             table: ncTbl,
             base,
@@ -2268,7 +2270,8 @@ export default async (
             fields: null, //Object.values(tblLinkGroup).flat(),
             logBasic,
             insertedAssocRef,
-            logDetailed
+            logDetailed,
+            records: recordsMap[ncTbl.id]
           });
         }
 

@@ -2,7 +2,7 @@ import cors from 'cors';
 import express from 'express';
 
 import Noco from '../lib/noco/Noco';
-process.env.NC_VERSION = '0009044';
+process.env.NC_VERSION = '0091200';
 
 const server = express();
 server.use(

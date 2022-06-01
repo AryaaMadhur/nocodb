@@ -1367,7 +1367,7 @@ export default async (
           break;
 
         case UITypes.Attachment:
-          if (syncDB.options.syncLookup) rec[key] = null;
+          if (!syncDB.options.syncAttachment) rec[key] = null;
           else {
             const tempArr = [];
             for (const v of value) {

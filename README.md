@@ -1,6 +1,6 @@
 <h1 align="center" style="border-bottom: none">
     <div>
-        <a style="color:#36f" href="https://www.nocodb.com">
+        <a style="color:#36f" href="https://www.nocodb.co">
             <img src="/packages/nc-gui/assets/img/brand/nocodb-full.png" height="80" />
             <br>
     The Open Source Airtable Alternative 
